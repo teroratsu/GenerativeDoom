@@ -658,9 +658,9 @@ namespace GenerativeDoom
                 Convert.ToInt32(doorWidth.Text),
                 Convert.ToInt32(doorSize.Text),
                 Convert.ToInt32(doorHeight.Text),
-                10,
-                2,
-                1
+                Convert.ToInt32(roomNb.Text),
+                Convert.ToInt32(lockedNb.Text),
+                Convert.ToInt32(BossNb.Text)
                 );
 
             correctMissingTex();
