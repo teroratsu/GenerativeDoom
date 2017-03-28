@@ -49,6 +49,13 @@ Then we only need to add the **Spawn** and **End** room and we are done !
 
 - The last thing to do is to **link rooms to eachothers**. To do so we look for possible **shortcuts** (*for example at the bottom left of the figure above where there are 4 rooms, the bottom left one has been linked to the one above because none of the 2 other rooms at the left are locked so this link does'nt break the LD*).
 
+## About
+
+- Rooms dimensions and prefabs are fully customizable, as long as they keep an entrance at all directions (centered, it's size depend on the height parameter you give to the generator)
+- Rooms space depends on doorway size parameter, tweak it, have fun.
+- When you created a prefabs be sure that it's size correspond to the one in Room.roomDimensions. You can even create not squared rooms! What a beautiful world.
+- **When you create a prefab, be sure to create a json file using the editor along the generator. You only have to to provide the prefab path relative to the build folder and the roomType of the room you created (for obvious reasons)**.
+
 ----
 
 ## Want to contribute or re-use my work ?
