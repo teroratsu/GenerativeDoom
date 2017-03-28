@@ -10,9 +10,11 @@ Procedural generation of doom level using prefabs to build a coherent Level desi
 - Change MapSet.Disposal() and Map ctor to public
 - Expose General.Map.map vars (required to clear the map between two LD generation)
 
+```csharp
             //clear map
             General.Map.map.Dispose();
             General.Map.map = new MapSet();
+```
 
 - Expose InsertPrefabStream and PastePrefab functions in the CopyPasteManager class (to be able to copy and paste prefabs).
 - paste the "prefabs/" folder in the build folder. 
@@ -26,7 +28,7 @@ The generation is made in a few steps:
 - First we import all rooms by reading the json files extracting data about saved prefabs.
 - Then we sort the rooms by RoomType
 
-
+```csharp
         public enum RoomType {
         NONE,      // default (should not occur)
         Key,       // contains a key (spawned by a script)
@@ -36,6 +38,7 @@ The generation is made in a few steps:
         Spawn,     // PlayerStart thing
         End        // End thing
         }
+```
 
 - We can now order the rooms following a simple algorithm :
 Spawn the **Locked** rooms first then the **Boss** rooms and then the **Basic** ones.
