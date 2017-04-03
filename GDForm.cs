@@ -703,8 +703,7 @@ namespace GenerativeDoom
                 //make a list of rooms using specified parameters
                 List<Room> selectedRooms = new List<Room>();
                 int locked_t = lockedRoomAmount;
-                int boss_t = bossRoomAmount;
-                int i = roomAmount - 2; // minus spawn and last room
+                int i = roomAmount - bossRoomAmount - 2; // minus spawn and last room
                 while (i > 1)
                 {
                     // first we add the locked rooms
@@ -716,19 +715,9 @@ namespace GenerativeDoom
                     }
                     else
                     {
-                        //then the boss rooms
-                        if(boss_t > 0)
-                        {
-                            --boss_t;
-                            selectedRooms.Add(new Room(BossRooms[rng.Next(BossRooms.Count)]));
-                            --i;
-                        }
-                        else
-                        {
-                            // and finally the normal rooms
-                            selectedRooms.Add(new Room(normalRooms[rng.Next(normalRooms.Count)]));
-                            --i;
-                        }
+                        // and finally the normal rooms
+                        selectedRooms.Add(new Room(normalRooms[rng.Next(normalRooms.Count)]));
+                        --i;
                     }
                 }
                 // shuffle
@@ -741,6 +730,15 @@ namespace GenerativeDoom
                     selectedRooms[k] = selectedRooms[n];
                     selectedRooms[n] = value;
                 }  
+                //add boss rooms
+                for(i = 0 ; i< bossRoomAmount; ++i)
+                {
+                    //get index of a locked room
+                    int index = selectedRooms.FindIndex(room => room.type == RoomType.Locked);
+                    int range = selectedRooms.Count-1 - index;
+                    //insert the room after the locked room found to make sure the player has a good weapon to fight this horrible beast
+                    selectedRooms.Insert(rng.Next(range) + index , new Room(BossRooms[rng.Next(BossRooms.Count)]));
+                }
                 // add key rooms
                 locked_t = lockedRoomAmount;
                 for(i = 0; i< selectedRooms.Count; ++i)
