@@ -41,8 +41,9 @@ The generation is made in a few steps:
 ```
 
 - We can now order the rooms following a simple algorithm :
-Spawn the **Locked** rooms first then the **Boss** rooms and then the **Basic** ones.
+Spawn the **Locked** rooms first then the **Basic** ones.
 We *shuffle the rooms* to randomize their order.
+Then we add the **Boss** rooms after at least a locked one to give the player a good enough weapon.
 Afterwards we spawn the **Key** rooms to be sure that there is at least a key room before a locked room.
 Then we only need to add the **Spawn** and **End** room and we are done !
 
